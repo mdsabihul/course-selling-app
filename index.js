@@ -1,36 +1,12 @@
 const express = require("express");
 const jwt = require('jsonwebtoken');
 const app = express();
-
-app.post('/user/signup', () => {
-    res.json({
-        message: "Signup EndPoint"
-    })
-});
-
-app.post('/user/signin', () => {
-    res.json({
-        message: "SignIn EndPoint"
-    })
-});
-
-app.get('/user/purchases', () => {
-    res.json({
-        message: "Signup EndPoint"
-    })
-});
-
-app.get('/course/purchase', () => {
-    res.json({
-        message: "Signup EndPoint"
-    })
-});
-
-app.get('/courses', () => {
-    res.json({
-        message: "Signup EndPoint"
-    })
-});
+const { userRouter } = require("./routes/user");
+const { courseRouter } = require("./routes/course");
 
 
-app.listen(300)
+app.use("/user", userRouter);
+app.use("/course", courseRouter);
+
+
+app.listen(3000)
