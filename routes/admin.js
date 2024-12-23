@@ -1,7 +1,9 @@
+
+
 const { Router } = require("express");
 const adminRouter = Router();
 
-adminRouter
+const { adminModal } = require("../db");
 
 adminRouter.post('/signup', (req, res) => {
     res.json({
