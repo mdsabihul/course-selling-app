@@ -1,5 +1,6 @@
 const express = require("express");
-const jwt = require('jsonwebtoken');
+require('dotenv').config();
+const mongoose = require("mongoose");
 const app = express();
 const { userRouter } = require("./routes/user");
 const { courseRouter } = require("./routes/course");
@@ -11,4 +12,9 @@ app.use("/api/v1/course", courseRouter);
 app.use("/api/v1/admin", adminRouter);
 
 
-app.listen(3000)
+const main = async () => {
+    await mongoose.connect(process.env.DB_URL + "/coursera-app");
+    app.listen(3000)
+}
+
+main();
